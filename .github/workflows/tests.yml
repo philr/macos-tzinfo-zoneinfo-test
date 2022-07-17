@@ -1,0 +1,20 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-10.15, macos-11, macos-12]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - run: ls -il /usr/share/*zoneinfo*
+      - run: ls -R /usr/share/*zoneinfo*
+      - run: bundle exec ruby test.rb
