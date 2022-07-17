@@ -2,4 +2,4 @@
 
 source 'https://rubygems.org'
 
-gem 'tzinfo', '~> 2'
+gem 'tzinfo', '~> 1'
